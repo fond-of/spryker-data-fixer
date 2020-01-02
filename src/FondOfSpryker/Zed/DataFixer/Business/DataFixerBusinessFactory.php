@@ -2,15 +2,11 @@
 
 namespace FondOfSpryker\Zed\DataFixer\Business;
 
-use DataFixer\Delivery\Client;
-
 use FondOfSpryker\Zed\DataFixer\Business\Collection\DataFixerCollection;
 use FondOfSpryker\Zed\DataFixer\Business\Collection\DataFixerCollectionInterface;
-use FondOfSpryker\Zed\DataFixer\Business\Dependency\DataFixerInterface;
 use FondOfSpryker\Zed\DataFixer\Business\Handler\DataFixerHandler;
 use FondOfSpryker\Zed\DataFixer\Business\Handler\DataFixerHandlerInterface;
 use FondOfSpryker\Zed\DataFixer\DataFixerDependencyProvider;
-use Spryker\Shared\KeyBuilder\KeyBuilderInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
@@ -29,8 +25,6 @@ class DataFixerBusinessFactory extends AbstractBusinessFactory
 
     /**
      * @return \FondOfSpryker\Zed\DataFixer\Business\Collection\DataFixerCollectionInterface
-     * @throws \FondOfSpryker\Zed\DataFixer\Business\Exception\WrongFixerException
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     protected function createDataFixerCollection(): DataFixerCollectionInterface
     {
@@ -38,8 +32,7 @@ class DataFixerBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return array|DataFixerInterface[]
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \FondOfSpryker\Zed\DataFixer\Business\Dependency\DataFixerInterface[]
      */
     protected function getRegisteredDataFixer(): array
     {
@@ -48,11 +41,9 @@ class DataFixerBusinessFactory extends AbstractBusinessFactory
 
     /**
      * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     protected function getStoreFacade(): StoreFacadeInterface
     {
         return $this->getProvidedDependency(DataFixerDependencyProvider::FACADE_STORE);
     }
-
 }

@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\DataFixer\Communication\Console;
 
+use Exception;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Input\InputArgument;
@@ -26,8 +27,11 @@ class DataFixerConsole extends Console
             static::RESOURCE_FIXER,
             static::RESOURCE_FIXER_SHORTCUT,
             InputArgument::OPTIONAL,
-            sprintf('Defines the fixer to use. Available fixer: %s-> %s', PHP_EOL,
-                implode(PHP_EOL.'-> ', $this->getFacade()->getRegisteredFixerNames()))
+            sprintf(
+                'Defines the fixer to use. Available fixer: %s-> %s',
+                PHP_EOL,
+                implode(PHP_EOL . '-> ', $this->getFacade()->getRegisteredFixerNames())
+            )
         );
         $this->addOption(
             static::STORE_IDS,
@@ -41,8 +45,8 @@ class DataFixerConsole extends Console
     }
 
     /**
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
      * @return int|null
      */
@@ -64,17 +68,19 @@ class DataFixerConsole extends Console
             $stores = explode(',', $storeIdsString);
         }
 
-        if (count($stores) === 0){
+        if (count($stores) === 0) {
             $stores = [Store::getInstance()->getStoreName()];
         }
 
         try {
             $this->getFacade()->handleFixer($fixerNames, $stores);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $status = static::CODE_ERROR;
             $messenger->error(sprintf(
                 'Command %s failt with message: %s%s!',
-                static::COMMAND_NAME, PHP_EOL, $exception->getMessage()
+                static::COMMAND_NAME,
+                PHP_EOL,
+                $exception->getMessage()
             ));
         }
         $messenger->info(sprintf(
@@ -83,5 +89,4 @@ class DataFixerConsole extends Console
         ));
         return $status;
     }
-
 }

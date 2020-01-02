@@ -20,8 +20,9 @@ class DataFixerHandler implements DataFixerHandlerInterface
 
     /**
      * DataFixerHandler constructor.
-     * @param  \FondOfSpryker\Zed\DataFixer\Business\Collection\DataFixerCollectionInterface  $dataFixer
-     * @param  \Spryker\Zed\Store\Business\StoreFacadeInterface  $storeFacade
+     *
+     * @param \FondOfSpryker\Zed\DataFixer\Business\Collection\DataFixerCollectionInterface $dataFixer
+     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */
     public function __construct(DataFixerCollectionInterface $dataFixer, StoreFacadeInterface $storeFacade)
     {
@@ -30,8 +31,9 @@ class DataFixerHandler implements DataFixerHandlerInterface
     }
 
     /**
-     * @param  array  $fixerNames
-     * @param  array  $stores
+     * @param array $fixerNames
+     * @param array $stores
+     *
      * @return void
      */
     public function fix(array $fixerNames, array $stores): void
@@ -51,9 +53,11 @@ class DataFixerHandler implements DataFixerHandlerInterface
     }
 
     /**
-     * @param  array  $stores
-     * @return array
+     * @param array $stores
+     *
      * @throws \FondOfSpryker\Zed\DataFixer\Business\Exception\StoreNotFoundException
+     *
+     * @return array
      */
     protected function prepareAndValidateStores(array $stores): array
     {
@@ -69,8 +73,11 @@ class DataFixerHandler implements DataFixerHandlerInterface
         }
 
         if (count($ids) !== count($stores)) {
-            throw new StoreNotFoundException(sprintf('Could not match all stores %s => %s', json_encode($stores),
-                json_encode($ids)));
+            throw new StoreNotFoundException(sprintf(
+                'Could not match all stores %s => %s',
+                json_encode($stores),
+                json_encode($ids)
+            ));
         }
 
         return $ids;

@@ -10,7 +10,8 @@ interface DataFixerInterface
     public function getName(): string;
 
     /**
-     * @param  array  $stores
+     * @param array $stores
+     *
      * @return bool
      */
     public function fix(array $stores): bool;

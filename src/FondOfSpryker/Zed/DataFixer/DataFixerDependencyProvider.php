@@ -2,9 +2,6 @@
 
 namespace FondOfSpryker\Zed\DataFixer;
 
-use FondOfSpryker\Zed\DataFixerContentful\Communication\Plugin\ContentfulDataFixerPlugin;
-use FondOfSpryker\Zed\DataFixerContentful\Communication\Plugin\ContentfulPageSearchDataFixerPlugin;
-use FondOfSpryker\Zed\DataFixerProduct\Communication\Plugin\ProductAvailabilityAndReservationDataFixerPlugin;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -14,7 +11,7 @@ class DataFixerDependencyProvider extends AbstractBundleDependencyProvider
     public const FACADE_STORE = 'FACADE_STORE';
 
     /**
-     * @param  \Spryker\Zed\Kernel\Container  $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
      */
@@ -26,20 +23,18 @@ class DataFixerDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param  \Spryker\Zed\Kernel\Container  $container
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
      * @return array
      */
     public function getDataFixer(Container $container): array
     {
-        return [
-            new ProductAvailabilityAndReservationDataFixerPlugin(),
-            new ContentfulDataFixerPlugin(),
-            new ContentfulPageSearchDataFixerPlugin(),
-        ];
+        return [];
     }
 
     /**
-     * @param  \Spryker\Zed\Kernel\Container  $container
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
      * @return \Spryker\Zed\Kernel\Container
      */
     protected function registerDataFixer(Container $container): Container
@@ -52,7 +47,8 @@ class DataFixerDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param  \Spryker\Zed\Kernel\Container  $container
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
      * @return \Spryker\Zed\Kernel\Container
      */
     protected function addStoreFacade(Container $container): Container

@@ -2,7 +2,6 @@
 
 namespace FondOfSpryker\Zed\DataFixer\Business;
 
-use FondOfSpryker\Zed\DataFixer\DataFixerDependencyProvider;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -18,7 +17,13 @@ class DataFixerFacade extends AbstractFacade implements DataFixerFacadeInterface
         return $this->getFactory()->createDataFixerHandler()->getAvailableFixer();
     }
 
-    public function handleFixer(array $fixerNames, array $stores)
+    /**
+     * @param array $fixerNames
+     * @param array $stores
+     *
+     * @return void
+     */
+    public function handleFixer(array $fixerNames, array $stores): void
     {
         $this->getFactory()->createDataFixerHandler()->fix($fixerNames, $stores);
     }
