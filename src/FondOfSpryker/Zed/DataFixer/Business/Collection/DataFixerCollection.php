@@ -16,8 +16,6 @@ class DataFixerCollection implements DataFixerCollectionInterface, Countable
     protected $dataFixer = [];
 
     /**
-     * DataFixerCollection constructor.
-     *
      * @param array $dataFixer
      */
     public function __construct(array $dataFixer)
@@ -77,6 +75,7 @@ class DataFixerCollection implements DataFixerCollectionInterface, Countable
     protected function registerDataFixer(DataFixerInterface $dataFixer): array
     {
         $this->dataFixer[$dataFixer->getName()] = $dataFixer;
+
         return $this->dataFixer;
     }
 

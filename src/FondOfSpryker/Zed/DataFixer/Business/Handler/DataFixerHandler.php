@@ -19,8 +19,6 @@ class DataFixerHandler implements DataFixerHandlerInterface
     protected $storeFacade;
 
     /**
-     * DataFixerHandler constructor.
-     *
      * @param \FondOfSpryker\Zed\DataFixer\Business\Collection\DataFixerCollectionInterface $dataFixer
      * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */

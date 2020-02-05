@@ -19,6 +19,7 @@ class DataFixerDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container = $this->registerDataFixer($container);
         $container = $this->addStoreFacade($container);
+
         return $container;
     }
 

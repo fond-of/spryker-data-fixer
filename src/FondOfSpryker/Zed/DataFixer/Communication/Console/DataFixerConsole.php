@@ -9,6 +9,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @method \FondOfSpryker\Zed\DataFixer\Business\DataFixerFacadeInterface getFacade()
+ */
 class DataFixerConsole extends Console
 {
     public const COMMAND_NAME = 'data-fixer:fix';
@@ -87,6 +90,7 @@ class DataFixerConsole extends Console
             'You just executed %s!',
             static::COMMAND_NAME
         ));
+
         return $status;
     }
 }
