@@ -16,7 +16,7 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 class DataFixerBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \FondOfSpryker\Zed\DataFixer\Business\DataFixerHandlerInterface
+     * @return \FondOfSpryker\Zed\DataFixer\Business\Handler\DataFixerHandlerInterface
      */
     public function createDataFixerHandler(): DataFixerHandlerInterface
     {

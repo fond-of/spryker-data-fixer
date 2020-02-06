@@ -64,7 +64,7 @@ class DataFixerCollection implements DataFixerCollectionInterface, Countable
      */
     public function count()
     {
-        return $this->count($this->dataFixer);
+        return count($this->dataFixer);
     }
 
     /**

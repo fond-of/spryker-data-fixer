@@ -38,7 +38,7 @@ class DataFixerHandler implements DataFixerHandlerInterface
     {
         $stores = $this->prepareAndValidateStores($stores);
         foreach ($fixerNames as $fixerName) {
-            $this->dataFixer->getFixer($fixerName, $stores)->fix($stores);
+            $this->dataFixer->getFixer($fixerName)->fix($stores);
         }
     }
 
